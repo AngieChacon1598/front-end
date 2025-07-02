@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getEstadisticas } from '../services/api';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  PieChart, Pie, Cell, ComposedChart
+  PieChart, Pie, Cell, ComposedChart, Line
 } from 'recharts';
 import { FaUsers, FaBriefcase, FaMapMarkerAlt, FaCertificate } from 'react-icons/fa';
 import './Estadisticas.css';
