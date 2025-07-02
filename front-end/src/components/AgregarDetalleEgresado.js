@@ -33,7 +33,8 @@ function AgregarDetalleEgresado() {
 
   const fetchEgresados = async () => {
     try {
-      const response = await getEgresados();
+      const params = new URLSearchParams({ page: 1, per_page: 1000 });
+      const response = await getEgresados(params);
       setEgresados(Array.isArray(response.data.egresados) ? response.data.egresados : []);
     } catch (error) {
       console.error('Error al obtener los egresados:', error);
