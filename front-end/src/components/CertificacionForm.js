@@ -57,6 +57,11 @@ function CertificacionForm({ egresado, certificacion, onSuccess, onCancel }) {
       setLoading(false);
       return;
     }
+    if (!egresado || !egresado.codigo) {
+      setError('Debes seleccionar un egresado válido.');
+      setLoading(false);
+      return;
+    }
     const data = new FormData();
     data.append('codigo_egresado', egresado.codigo);
     data.append('nombre', form.nombre);
