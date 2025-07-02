@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { getDetalleEgresados, getEgresados } from '../services/api';
+import { getDetalleEgresados, getEgresado } from '../services/api';
 import { FaArrowLeft } from 'react-icons/fa';
 import CertificacionList from './CertificacionList';
 import CertificacionForm from './CertificacionForm';
@@ -20,7 +20,7 @@ function HistorialLaboral() {
       try {
         const detallesRes = await getDetalleEgresados('A', codigo);
         setDetalles(Array.isArray(detallesRes.data.detalles) ? detallesRes.data.detalles : []);
-        const egresadoRes = await getEgresados(codigo);
+        const egresadoRes = await getEgresado(codigo);
         setEgresado(egresadoRes.data);
       } catch (err) {
         setDetalles([]);

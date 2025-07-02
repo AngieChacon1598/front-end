@@ -223,3 +223,7 @@ export const getEstadisticas = () => {
     axios.get(EMPRESAS_API_URL)
   ]);
 };
+
+export const getEgresado = (codigo) => {
+  return axios.get(`${API_URL}/${codigo}`);
+};
