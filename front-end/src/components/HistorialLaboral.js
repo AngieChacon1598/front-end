@@ -18,7 +18,7 @@ function HistorialLaboral() {
     const fetchHistorial = async () => {
       setLoading(true);
       try {
-        const detallesRes = await getDetalleEgresados(codigo);
+        const detallesRes = await getDetalleEgresados('A', codigo);
         setDetalles(Array.isArray(detallesRes.data.detalles) ? detallesRes.data.detalles : []);
         const egresadoRes = await getEgresados(codigo);
         setEgresado(egresadoRes.data);
