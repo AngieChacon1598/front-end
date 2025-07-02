@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaTrashAlt, FaUndo, FaPlus } from 'react-icons/fa';
 import './Empresa.css';
@@ -13,7 +13,7 @@ function EmpresaList() {
   const [totalPages, setTotalPages] = useState(1);
   const [perPage, setPerPage] = useState(10);
 
-  const fetchEmpresas = async () => {
+  const fetchEmpresas = useCallback(async () => {
     try {
       const params = new URLSearchParams({
         estado: filter,
@@ -28,11 +28,11 @@ function EmpresaList() {
     } catch (error) {
       setMessage('Error al obtener empresas');
     }
-  };
+  }, [filter, page, perPage, busqueda]);
 
   useEffect(() => {
     fetchEmpresas();
-  }, [filter, page, perPage, busqueda, fetchEmpresas]);
+  }, [fetchEmpresas]);
 
   const handleBusqueda = e => {
     setBusqueda({ ...busqueda, [e.target.name]: e.target.value });

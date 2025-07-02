@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   getDetalleEgresados,
@@ -19,7 +19,7 @@ function DetalleEgresadoList() {
   const [totalPages, setTotalPages] = useState(1);
   const [perPage, setPerPage] = useState(10);
 
-  const fetchDetalles = async () => {
+  const fetchDetalles = useCallback(async () => {
     try {
       console.log('Llamando getDetalleEgresados con:', filter, codigoFilter, page, perPage);
       const response = await getDetalleEgresados(filter, codigoFilter, page, perPage);
@@ -31,7 +31,7 @@ function DetalleEgresadoList() {
       setDetalles([]);
       setTotalPages(1);
     }
-  };
+  }, [filter, codigoFilter, page, perPage]);
 
   const fetchEgresados = async () => {
     try {
