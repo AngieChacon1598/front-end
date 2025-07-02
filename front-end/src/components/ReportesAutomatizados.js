@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getConfiguracionReportes, enviarReporteManual, getVistaPreviaReporte, updateConfiguracionReportes } from '../services/api';
-import { FaEnvelope, FaCog, FaEye, FaPaperPlane, FaClock, FaCalendarAlt } from 'react-icons/fa';
+import { getConfiguracionReportes, getVistaPreviaReporte, updateConfiguracionReportes } from '../services/api';
+import { FaEnvelope, FaCog, FaEye, FaPaperPlane, FaClock } from 'react-icons/fa';
 import './ReportesAutomatizados.css';
 
 const ReportesAutomatizados = () => {

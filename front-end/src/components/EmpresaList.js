@@ -32,7 +32,7 @@ function EmpresaList() {
 
   useEffect(() => {
     fetchEmpresas();
-  }, [filter, page, perPage, busqueda]);
+  }, [filter, page, perPage, busqueda, fetchEmpresas]);
 
   const handleBusqueda = e => {
     setBusqueda({ ...busqueda, [e.target.name]: e.target.value });

@@ -6,7 +6,7 @@ import {
   deleteDetalleEgresado,
   restoreDetalleEgresado
 } from '../services/api';
-import { FaTrashAlt, FaEdit, FaUndo, FaUsers, FaCircle, FaPlus } from 'react-icons/fa';
+import { FaTrashAlt, FaEdit, FaUndo, FaCircle, FaPlus } from 'react-icons/fa';
 import './DetalleEgresadoList.css';
 
 function DetalleEgresadoList() {
@@ -87,7 +87,7 @@ function DetalleEgresadoList() {
   useEffect(() => {
     fetchDetalles();
     fetchEgresados();
-  }, [filter, codigoFilter, page, perPage]);
+  }, [filter, codigoFilter, page, perPage, fetchDetalles]);
 
   useEffect(() => {
     if (message) {

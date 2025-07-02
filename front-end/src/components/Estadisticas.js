@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { getEstadisticas } from '../services/api';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  PieChart, Pie, Cell, LineChart, Line, AreaChart, Area, ComposedChart
+  PieChart, Pie, Cell, ComposedChart
 } from 'recharts';
-import { FaUsers, FaGraduationCap, FaBriefcase, FaMapMarkerAlt, FaChartLine, FaCertificate } from 'react-icons/fa';
+import { FaUsers, FaBriefcase, FaMapMarkerAlt, FaCertificate } from 'react-icons/fa';
 import './Estadisticas.css';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D'];
@@ -13,24 +13,21 @@ const Estadisticas = () => {
   const [egresados, setEgresados] = useState([]);
   const [detalles, setDetalles] = useState([]);
   const [certificaciones, setCertificaciones] = useState([]);
-  const [empresas, setEmpresas] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [egresadosRes, detallesRes, certRes, empresasRes] = await getEstadisticas();
+        const [egresadosRes, detallesRes, certRes] = await getEstadisticas();
         setEgresados(egresadosRes.data.egresados || []);
         setDetalles(detallesRes.data.detalles || []);
         setCertificaciones(certRes.data.certificaciones || []);
-        setEmpresas(empresasRes.data.empresas || []);
         // Calcular estadísticas
         calcularEstadisticas(
           egresadosRes.data.egresados || [],
           detallesRes.data.detalles || [],
-          certRes.data.certificaciones || [],
-          empresasRes.data.empresas || []
+          certRes.data.certificaciones || []
         );
       } catch (error) {
         console.error('Error al cargar datos:', error);
@@ -41,7 +38,7 @@ const Estadisticas = () => {
     fetchData();
   }, []);
 
-  const calcularEstadisticas = (egresados, detalles, certificaciones, empresas) => {
+  const calcularEstadisticas = (egresados, detalles, certificaciones) => {
     // 1. Tasa de empleabilidad por carrera
     const empleabilidadPorCarrera = {};
     egresados.forEach(eg => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getReporteEgresadosPorEstado } from '../services/api';
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const COLORS = ['#00C49F', '#FF8042'];
 const ESTADO_LABELS = { 'A': 'Activo', 'I': 'Inactivo' };

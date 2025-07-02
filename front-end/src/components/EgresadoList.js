@@ -23,6 +23,8 @@ const EgresadoList = ({
   const [totalPages, setTotalPages] = useState(1);
   const [perPage, setPerPage] = useState(10);
 
+  const filtrosString = JSON.stringify(filtros);
+
   const fetchEgresados = async () => {
     setLoading(true);
     try {
@@ -59,7 +61,7 @@ const EgresadoList = ({
 
   useEffect(() => {
     setPage(1);
-  }, [filter, JSON.stringify(filtros), perPage]);
+  }, [filter, filtrosString, perPage]);
 
   useEffect(() => {
     fetchEgresados();
