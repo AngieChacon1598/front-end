@@ -14,6 +14,12 @@ const ENCUESTAS_API_URL = `${BASE_URL}/api/encuestas`;
 
 // Función para obtener todos los egresados
 export const getEgresados = (params) => {
+  if (!params) {
+    return axios.get(API_URL);
+  }
+  if (typeof params === 'string') {
+    return axios.get(`${API_URL}/${params}`);
+  }
   return axios.get(API_URL + "?" + params.toString());
 };
 
