@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 // Configuración para desarrollo y producción
-const isDevelopment = process.env.NODE_ENV === 'development';
-const BASE_URL = isDevelopment 
-  ? 'http://localhost:5001' 
-  : 'https://pii-232-segegresados-api.onrender.com';
+const BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
 
 // URLs base para todas las APIs
 const API_URL = `${BASE_URL}/egresados`;
