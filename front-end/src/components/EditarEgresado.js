@@ -53,7 +53,7 @@ function EditarEgresado({ setMessage, fetchEgresados }) {
       if (response.status === 200 || response.status === 201 || response.status === 204) {
         setMessage('Egresado actualizado correctamente!');
         fetchEgresados && fetchEgresados();
-        navigate('/egresados');
+        navigate('/');
       } else {
         setMessage('Error al actualizar el egresado');
       }
