@@ -49,11 +49,15 @@ function EditarEgresado({ setMessage, fetchEgresados }) {
 
     setLoading(true);
     try {
-      await updateEgresado(codigo, egresado);
-      setMessage('Egresado actualizado correctamente!');
-      fetchEgresados();
-      navigate('/');
-    } catch {
+      const response = await updateEgresado(codigo, egresado);
+      if (response.status === 200 || response.status === 201 || response.status === 204) {
+        setMessage('Egresado actualizado correctamente!');
+        fetchEgresados && fetchEgresados();
+        navigate('/egresados');
+      } else {
+        setMessage('Error al actualizar el egresado');
+      }
+    } catch (error) {
       setMessage('Error al actualizar el egresado');
     } finally {
       setLoading(false);
